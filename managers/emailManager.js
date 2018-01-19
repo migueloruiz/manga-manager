@@ -2,7 +2,7 @@ const env = require('./../config')
 const nodemailer = require('nodemailer')
 const path = require('path')
 
-const transporter = nodemailer.createTransport('SMTP', {
+const transporter = nodemailer.createTransport({
     service: env.EMAIL_SERVICE,
     auth: {
            user: env.SENDER_EMAIL,
