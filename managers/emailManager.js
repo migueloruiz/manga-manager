@@ -3,8 +3,8 @@ const nodemailer = require('nodemailer')
 const path = require('path')
 
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
+    host: env.EMAIL_HOST,
+    port: env.EMAIL_PORT,
     secure: true,
     tls: {
         rejectUnauthorized: false
@@ -32,7 +32,6 @@ function sendManga(title, fileName) {
 
     return new Promise((resolve, reject) => {
         transporter.sendMail(message, (error, info) => {
-            console.log(error, info)
             error ? reject() : resolve() 
         })
     })
@@ -50,7 +49,6 @@ function sendError(error, title, referenceUrl) {
         <p style="color: white; font-family:'Arial'"><strong>Manga link</strong>: <a href="${referenceUrl}">${title}</a></p>
     </div>`
     transporter.sendMail(message, (error, info) => { 
-        console.log(error, info)
         retrun 
     })
 }

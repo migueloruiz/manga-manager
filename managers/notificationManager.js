@@ -13,7 +13,6 @@ module.exports = {
 	            value3: referenceUrl
             }
         }, (error, response, body) => { 
-            console.log(body)
             return
         })
     }
