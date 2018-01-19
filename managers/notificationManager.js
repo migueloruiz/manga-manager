@@ -12,6 +12,9 @@ module.exports = {
 	            value2: succes ? 'Delivered' : 'Fail',
 	            value3: referenceUrl
             }
-        }, (error, response, body) => { return })
+        }, (error, response, body) => { 
+            console.log(body)
+            return
+        })
     }
 }
