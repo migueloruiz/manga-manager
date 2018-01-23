@@ -2,8 +2,6 @@ const env = require('./../config')
 const nodemailer = require('nodemailer')
 var sgTransport = require('nodemailer-sendgrid-transport');
 
-
-
 const emailMessage = {
     from: env.SENDER_EMAIL,
     to: [env.KINDLE_EMAIL]
@@ -12,7 +10,8 @@ const transportOptions = {
     auth: {
         api_user: env.SENDGRID_USERNAME,
         api_key: env.SENDGRID_PASSWORD
-    }
+    },
+    greetingTimeout: 400000
 }
 
 const transporter = nodemailer.createTransport(sgTransport(transportOptions));
