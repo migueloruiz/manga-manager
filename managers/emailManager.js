@@ -1,24 +1,20 @@
 const env = require('./../config')
 const nodemailer = require('nodemailer')
-const path = require('path')
+var sgTransport = require('nodemailer-sendgrid-transport');
 
-const transporter = nodemailer.createTransport({
-    host: env.EMAIL_HOST,
-    port: env.EMAIL_PORT,
-    secure: true,
-    tls: {
-        rejectUnauthorized: false
-    },
-    auth: {
-        user: env.SENDER_EMAIL,
-        pass: env.SENDER_EMAIL_PASSOWRD
-    }
-});
+
 
 const emailMessage = {
     from: env.SENDER_EMAIL,
     to: [env.KINDLE_EMAIL]
 }
+const transportOptions = {
+    auth: {
+        api_key: env.SENDGRID_API_KEY
+    }
+}
+
+const transporter = nodemailer.createTransport(sgTransport(transportOptions));
 
 function sendManga(title, fileName) {
     let message = Object.assign({}, emailMessage)
@@ -54,7 +50,6 @@ function sendError(error, title, referenceUrl) {
         retrun 
     })
 }
-
 
 module.exports = {
     sendManga: sendManga,
