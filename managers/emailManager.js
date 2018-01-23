@@ -10,7 +10,8 @@ const emailMessage = {
 }
 const transportOptions = {
     auth: {
-        api_key: env.SENDGRID_API_KEY
+        api_user: env.SENDGRID_USERNAME,
+        api_key: env.SENDGRID_PASSWORD
     }
 }
 
