@@ -7,7 +7,7 @@ module.exports = envalid.cleanEnv(process.env, {
     IS_DEV: bool(),
     PORT: port({ default: 4000, desc: 'The port to start the server on' }),
     SENDGRID_API_KEY: str(),
-    KINDLE_EMAIL: email(),
+    KINDLE_EMAIL: str(),
     SENDER_EMAIL: email(),
     ERROR_EMAIL: email(),
     MANGASTREAM_URL: url(),

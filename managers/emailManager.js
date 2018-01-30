@@ -4,7 +4,7 @@ var sgTransport = require('nodemailer-sendgrid-transport');
 
 const emailMessage = {
     from: env.SENDER_EMAIL,
-    to: [env.KINDLE_EMAIL]
+    to: env.KINDLE_EMAIL.split(',')
 }
 const transportOptions = {
     auth: {
